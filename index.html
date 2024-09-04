@@ -16,7 +16,7 @@
             align-items: center; 
             height: 100vh; 
             overflow: hidden; 
-            position: relative; /* Added to position hearts */ 
+            position: relative; 
         } 
 
         .envelope { 
@@ -30,7 +30,6 @@
             color: #e78c8c; 
         } 
 
-        /* Modal styles */ 
         .modal { 
             display: none; 
             position: fixed; 
@@ -70,12 +69,11 @@
             font-size: 24px; 
         } 
 
-        /* Heart animation */ 
         .heart-animation { 
             position: absolute; 
             font-size: 30px; 
             color: #e78c8c; 
-            pointer-events: none; /* Ensures hearts don't interfere with other elements */ 
+            pointer-events: none; 
         } 
 
         @keyframes float { 
@@ -86,78 +84,78 @@
     </style>
 </head>
 <body>
-    <div class="envelope" onclick="showMessage()"> 
-        <span class="envelope-icon" aria-label="Envelope with love letter">💌</span> 
-        <p>Click the envelope to open a love letter</p> 
+    <div class="envelope" onclick="showMessage()">
+        <span class="envelope-icon" aria-label="Envelope with love letter">💌</span>
+        <p>Click the envelope to open a love letter</p>
     </div>
 
     <!-- Modal for love letter -->
-    <div id="modal" class="modal" aria-labelledby="modal-title" aria-hidden="true"> 
-        <div class="modal-content"> 
-            <span class="close-btn" onclick="closeModal()" aria-label="Close">&times;</span> 
-            <p class="heart">❤️</p> 
-            <h2 id="modal-title">My Dearest,</h2> 
-            <p>Dear my Tatiana,  
-                Hello mahal ko, I just want to say I'm not good at words because I'm always unsure, but I mean it every time I say I love you. I may not be your first kiss, your first choice when it comes to comfort, love, trust, and happiness. I may not be the man in your dream fairy tale, but I'm trying to be because you're the queen in my dream palace. You're the one I want in my passenger seat when I have my first car, second car, and my last car.  
-                Ikaw lamang ang natatanging babae na gusto kong makasama sa byahe ng buhay. Mahal kita.
-            </p> 
-            <p>Forever yours,</p> 
-            <p><i>Eizen</i></p> 
-        </div> 
+    <div id="modal" class="modal" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()" aria-label="Close">&times;</span>
+            <p class="heart">❤️</p>
+            <h2 id="modal-title">My Dearest,</h2>
+            <p>Dear my Tatiana,
+                Hello mahal ko, I just wanna say I'm not good at words because I'm always unsure, but I mean it every time I say I love you. I may not be your first kiss, your first choice when it comes to comfort, love, trust, and happiness, and I may not be the man in your dream fairy tale, but I'm trying to be because you're the queen in my dream palace. You're the one that I want in my passenger seat when I have my first car, second car, and my last car.
+                Ikaw lamang ang natatanging babae na gusto kong makasama sa byahe ng buhay, Mahal kita.
+            </p>
+            <p>Forever yours,</p>
+            <p><i>Eizen</i></p>
+        </div>
     </div>
 
     <!-- Background music -->
-    <audio autoplay loop> 
-        <source src="https://drive.google.com/uc?export=download&id=1IWjdkhzNBQIeI-BCBf0tXpgVSD_mG3u_" type="audio/mpeg"> 
-        Your browser does not support the audio element. 
+    <audio autoplay loop>
+        <source src="https://drive.google.com/uc?export=download&id=1IWjdkhzNBQIeI-BCBf0tXpgVSD_mG3u_" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
 
     <!-- Container for animated hearts -->
     <div id="hearts-container"></div>
 
     <script>
-        function showMessage() { 
-            document.getElementById('modal').style.display = 'flex'; 
-        } 
+        function showMessage() {
+            document.getElementById('modal').style.display = 'flex';
+        }
 
-        function closeModal() { 
-            document.getElementById('modal').style.display = 'none'; 
-        } 
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
 
-        function handleOutsideClick(event) { 
-            if (event.target.classList.contains('modal')) { 
-                closeModal(); 
-            } 
-        } 
+        function handleOutsideClick(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal();
+            }
+        }
 
-        document.addEventListener('DOMContentLoaded', () => { 
-            document.querySelector('.modal').addEventListener('click', handleOutsideClick); 
-            createHearts(); 
-        }); 
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.modal').addEventListener('click', handleOutsideClick);
+            createHearts();
+        });
 
-        function createHearts() { 
-            const container = document.getElementById('hearts-container'); 
-            const numHearts = 20; // Number of hearts to display 
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const numHearts = 20; // Number of hearts to display
 
-            for (let i = 0; i < numHearts; i++) { 
-                const heart = document.createElement('div'); 
-                heart.className = 'heart-animation'; 
-                heart.innerHTML = '❤️'; 
+            for (let i = 0; i < numHearts; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-animation';
+                heart.innerHTML = '❤️';
 
-                // Randomize position and animation duration 
-                const size = Math.random() * 30 + 20; // Size between 20px and 50px 
-                const top = Math.random() * 100; // Position between 0% and 100% 
-                const left = Math.random() * 100; // Position between 0% and 100% 
-                const duration = Math.random() * 5 + 5; // Duration between 5s and 10s 
+                // Randomize position and animation duration
+                const size = Math.random() * 30 + 20; // Size between 20px and 50px
+                const top = Math.random() * 100; // Position between 0% and 100%
+                const left = Math.random() * 100; // Position between 0% and 100%
+                const duration = Math.random() * 5 + 5; // Duration between 5s and 10s
 
-                heart.style.fontSize = `${size}px`; 
-                heart.style.top = `${top}%`; 
-                heart.style.left = `${left}%`; 
-                heart.style.animation = `float ${duration}s ease-in-out infinite`; 
+                heart.style.fontSize = `${size}px`;
+                heart.style.top = `${top}%`;
+                heart.style.left = `${left}%`;
+                heart.style.animation = `float ${duration}s ease-in-out infinite`;
 
-                container.appendChild(heart); 
-            } 
-        } 
+                container.appendChild(heart);
+            }
+        }
     </script>
 </body>
 </html>
