@@ -1,9 +1,9 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Clickable Envelope</title> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clickable Envelope</title>
     <style>
         body { 
             font-family: 'Georgia', serif; 
@@ -84,36 +84,36 @@
             100% { transform: translateY(0); } 
         }
     </style>
-</head> 
-<body> 
+</head>
+<body>
     <div class="envelope" onclick="showMessage()"> 
         <span class="envelope-icon" aria-label="Envelope with love letter">💌</span> 
         <p>Click the envelope to open a love letter</p> 
-    </div> 
+    </div>
 
-    <!-- Modal for love letter --> 
+    <!-- Modal for love letter -->
     <div id="modal" class="modal" aria-labelledby="modal-title" aria-hidden="true"> 
         <div class="modal-content"> 
             <span class="close-btn" onclick="closeModal()" aria-label="Close">&times;</span> 
             <p class="heart">❤️</p> 
             <h2 id="modal-title">My Dearest,</h2> 
             <p>Dear my Tatiana,  
-                Hello mahal ko, i just wanna say im not good at words cause im always not sure, but i mean it every time i say iloveyou. I may not be your first kiss, your first choice when it comes to comfort, love, trust, happiness, and I may not be the man in your dream fairy tale, but I'm trying to be because you're the queen in my dream palace. You're the one that I want in my passenger seat when I have my first car, second car, and my last car.  
-                Ikaw lamang ang natatanging babae na gusto kong makasama sa byahe ng buhay, Mahal kita. 
+                Hello mahal ko, I just want to say I'm not good at words because I'm always unsure, but I mean it every time I say I love you. I may not be your first kiss, your first choice when it comes to comfort, love, trust, and happiness. I may not be the man in your dream fairy tale, but I'm trying to be because you're the queen in my dream palace. You're the one I want in my passenger seat when I have my first car, second car, and my last car.  
+                Ikaw lamang ang natatanging babae na gusto kong makasama sa byahe ng buhay. Mahal kita.
             </p> 
             <p>Forever yours,</p> 
             <p><i>Eizen</i></p> 
         </div> 
-    </div> 
+    </div>
 
-    <!-- Background music --> 
+    <!-- Background music -->
     <audio autoplay loop> 
         <source src="https://drive.google.com/uc?export=download&id=1IWjdkhzNBQIeI-BCBf0tXpgVSD_mG3u_" type="audio/mpeg"> 
         Your browser does not support the audio element. 
-    </audio> 
+    </audio>
 
-    <!-- Container for animated hearts --> 
-    <div id="hearts-container"></div> 
+    <!-- Container for animated hearts -->
+    <div id="hearts-container"></div>
 
     <script>
         function showMessage() { 
@@ -150,14 +150,14 @@
                 const left = Math.random() * 100; // Position between 0% and 100% 
                 const duration = Math.random() * 5 + 5; // Duration between 5s and 10s 
 
-                heart.style.fontSize = ${size}px; 
-                heart.style.top = ${top}%; 
-                heart.style.left = ${left}%; 
-                heart.style.animation = float ${duration}s ease-in-out infinite; 
+                heart.style.fontSize = `${size}px`; 
+                heart.style.top = `${top}%`; 
+                heart.style.left = `${left}%`; 
+                heart.style.animation = `float ${duration}s ease-in-out infinite`; 
 
                 container.appendChild(heart); 
             } 
         } 
     </script>
-</body> 
+</body>
 </html>
