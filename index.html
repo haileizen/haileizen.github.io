@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clickable Envelope</title>
+    <title>Interactive Envelope</title>
     <style>
         body { 
             font-family: 'Georgia', serif; 
@@ -19,16 +19,17 @@
             position: relative; 
         } 
 
-        .envelope { 
-            text-align: center; 
-            cursor: pointer; 
-            z-index: 1; 
-        } 
+        .envelope {
+            width: 150px;
+            height: 100px;
+            position: relative;
+            cursor: pointer;
+        }
 
-        .envelope-icon { 
-            font-size: 120px; 
-            color: #e78c8c; 
-        } 
+        .envelope-icon {
+            font-size: 100px;
+            color: #e78c8c;
+        }
 
         .modal { 
             display: none; 
@@ -74,6 +75,7 @@
             font-size: 30px; 
             color: #e78c8c; 
             pointer-events: none; 
+            animation: float 5s ease-in-out infinite;
         } 
 
         @keyframes float { 
@@ -104,11 +106,8 @@
         </div>
     </div>
 
-    <!-- Background music -->
-    <audio autoplay loop>
-        <source src="https://drive.google.com/uc?export=download&id=1IWjdkhzNBQIeI-BCBf0tXpgVSD_mG3u_" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <!-- Direct MP3 Player (Hidden) -->
+    <audio id="audio" src="https://your-username.github.io/your-repository/assets/your-audio-file.mp3" preload="auto"></audio>
 
     <!-- Container for animated hearts -->
     <div id="hearts-container"></div>
@@ -116,6 +115,8 @@
     <script>
         function showMessage() {
             document.getElementById('modal').style.display = 'flex';
+            createHearts(); // Ensure hearts are created after showing the message
+            playAudio(); // Play audio when envelope is clicked
         }
 
         function closeModal() {
@@ -146,15 +147,18 @@
                 const size = Math.random() * 30 + 20; // Size between 20px and 50px
                 const top = Math.random() * 100; // Position between 0% and 100%
                 const left = Math.random() * 100; // Position between 0% and 100%
-                const duration = Math.random() * 5 + 5; // Duration between 5s and 10s
 
                 heart.style.fontSize = `${size}px`;
                 heart.style.top = `${top}%`;
                 heart.style.left = `${left}%`;
-                heart.style.animation = `float ${duration}s ease-in-out infinite`;
 
                 container.appendChild(heart);
             }
+        }
+
+        function playAudio() {
+            const audio = document.getElementById('audio');
+            audio.play(); // Play the audio when the envelope is clicked
         }
     </script>
 </body>
