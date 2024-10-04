@@ -15,9 +15,22 @@
             justify-content: center; 
             align-items: center; 
             height: 100vh; 
+            overflow: hidden; 
+            position: relative; 
             flex-direction: column;
-            position: relative;
-            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* Darken background with overlay */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
+            z-index: 0;
         }
 
         .envelope {
@@ -25,7 +38,7 @@
             height: 100px;
             position: relative;
             cursor: pointer;
-            z-index: 1;
+            z-index: 2;
         }
 
         .envelope-icon {
@@ -43,7 +56,7 @@
             background-color: rgba(0, 0, 0, 0.5); 
             justify-content: center; 
             align-items: center; 
-            z-index: 2; 
+            z-index: 3; 
         } 
 
         .modal-content { 
@@ -70,34 +83,33 @@
         .heart { 
             color: #e78c8c; 
             font-size: 24px; 
-        }
+        } 
 
-        /* Style for the play button */
-        .music-player-btn {
-            background-color: #e78c8c;
-            color: white;
-            padding: 20px 40px;
-            border: none;
-            border-radius: 5px;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 10; /* Ensure it's clickable */
-            position: absolute;
-            bottom: 20px; /* Positioned slightly above the bottom */
-        }
-
+        /* Larger, glowing heart animation */
         .heart-animation { 
             position: absolute; 
-            font-size: 30px; 
-            color: #e78c8c; 
+            font-size: 40px; /* Larger hearts */
+            color: #ff4d4d; /* Brighter red */
             pointer-events: none; 
             animation: float 5s ease-in-out infinite;
+            text-shadow: 0 0 10px rgba(255, 77, 77, 0.7); /* Glow effect */
         } 
 
         @keyframes float { 
             0% { transform: translateY(0); } 
             50% { transform: translateY(-30px); } 
             100% { transform: translateY(0); } 
+        }
+
+        /* Style for Audiomack player container at the bottom */
+        .music-player-container {
+            position: absolute;
+            bottom: 20px; /* Distance from the bottom */
+            left: 50%;
+            transform: translateX(-50%); /* Center horizontally */
+            width: 100%;
+            max-width: 500px;
+            z-index: 1; /* Ensure it's above other elements */
         }
     </style>
 </head>
@@ -119,11 +131,10 @@
         </div>
     </div>
 
-    <!-- Music Play Button -->
-    <button class="music-player-btn" onclick="playMusic()">Play Song</button>
-
-    <!-- Hidden Audio Element -->
-    <audio id="audio" src="https://audiomack.com/song/ingrid-237/ikaw-at-ako" preload="auto"></audio>
+    <!-- Audiomack Audio Player at the bottom -->
+    <div class="music-player-container">
+        <iframe src="https://audiomack.com/embed/ingrid-237/song/ikaw-at-ako" scrolling="no" width="100%" height="252" frameborder="0" title="Ikaw at Ako"></iframe>
+    </div>
 
     <!-- Container for animated hearts -->
     <div id="hearts-container"></div>
@@ -131,7 +142,7 @@
     <script>
         function showMessage() {
             document.getElementById('modal').style.display = 'flex';
-            createHearts();
+            createHearts(); // Generate hearts when modal shows
         }
 
         function closeModal() {
@@ -155,12 +166,8 @@
             }
         }
 
-        function playMusic() {
-            const audio = document.getElementById('audio');
-            audio.play().catch(error => {
-                console.log('Audio playback error:', error);
-            });
-        }
+        // Add hearts when the page loads
+        window.onload = createHearts;
     </script>
 </body>
 </html>
