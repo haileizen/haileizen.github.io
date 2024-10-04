@@ -15,9 +15,9 @@
             justify-content: center; 
             align-items: center; 
             height: 100vh; 
-            overflow: hidden; 
-            position: relative; 
             flex-direction: column;
+            position: relative;
+            overflow: hidden;
         }
 
         .envelope {
@@ -25,7 +25,7 @@
             height: 100px;
             position: relative;
             cursor: pointer;
-            z-index: 1; /* Lower z-index so it appears behind the play button */
+            z-index: 1;
         }
 
         .envelope-icon {
@@ -72,16 +72,18 @@
             font-size: 24px; 
         }
 
+        /* Style for the play button */
         .music-player-btn {
             background-color: #e78c8c;
             color: white;
-            padding: 10px 20px;
+            padding: 20px 40px;
             border: none;
             border-radius: 5px;
-            font-size: 18px;
+            font-size: 24px;
             cursor: pointer;
-            margin: 20px 0;
-            z-index: 10; /* Higher z-index to make sure it stays on top */
+            z-index: 10; /* Ensure it's clickable */
+            position: absolute;
+            bottom: 20px; /* Positioned slightly above the bottom */
         }
 
         .heart-animation { 
