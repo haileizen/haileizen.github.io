@@ -97,18 +97,16 @@
             <span class="close-btn" onclick="closeModal()" aria-label="Close">&times;</span>
             <p class="heart">❤️</p>
             <h2 id="modal-title">My Dearest,</h2>
-            <p>Dear my Tatiana,
-                Hello mahal ko, I just wanna say I'm not good at words because I'm always unsure, but I mean it every time I say I love you. I may not be your first kiss, your first choice when it comes to comfort, love, trust, and happiness, and I may not be the man in your dream fairy tale, but I'm trying to be because you're the queen in my dream palace. You're the one that I want in my passenger seat when I have my first car, second car, and my last car.
-                Ikaw lamang ang natatanging babae na gusto kong makasama sa byahe ng buhay, Mahal kita.
-            </p>
+            <p>Dear my Tatiana, Hello mahal ko, I just wanna say I'm not good at words because I'm always unsure, but I mean it every time I say I love you. I may not be your first kiss, your first choice when it comes to comfort, love, trust, and happiness, and I may not be the man in your dream fairy tale, but I'm trying to be because you're the queen in my dream palace. You're the one that I want in my passenger seat when I have my first car, second car, and my last car. Ikaw lamang ang natatanging babae na gusto kong makasama sa byahe ng buhay, Mahal kita.</p>
             <p>Forever yours,</p>
             <p><i>Eizen</i></p>
         </div>
     </div>
 
-    <!-- SoundCloud Embed (Auto-play) Visible Player -->
-    <iframe width="100%" height="166" scrolling="no" frameborder="no" 
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/zmtavwYFJ12ufwjQ8&color=%23ff5500&inverse=false&auto_play=true&show_user=true"></iframe>
+    <!-- Audiomack Audio Player -->
+    <div class="music-player-container">
+        <iframe src="https://audiomack.com/embed/ingrid-237/song/ikaw-at-ako" scrolling="no" width="100%" height="252" frameborder="0" title="Ikaw at Ako"></iframe>
+    </div>
 
     <!-- Container for animated hearts -->
     <div id="hearts-container"></div>
@@ -116,42 +114,26 @@
     <script>
         function showMessage() {
             document.getElementById('modal').style.display = 'flex';
-            createHearts(); // Ensure hearts are created after showing the message
+            createHearts();
         }
 
         function closeModal() {
             document.getElementById('modal').style.display = 'none';
         }
 
-        function handleOutsideClick(event) {
-            if (event.target.classList.contains('modal')) {
-                closeModal();
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelector('.modal').addEventListener('click', handleOutsideClick);
-            createHearts();
-        });
-
         function createHearts() {
             const container = document.getElementById('hearts-container');
-            const numHearts = 20; // Number of hearts to display
-
+            const numHearts = 20;
             for (let i = 0; i < numHearts; i++) {
                 const heart = document.createElement('div');
                 heart.className = 'heart-animation';
                 heart.innerHTML = '❤️';
-
-                // Randomize position and animation duration
-                const size = Math.random() * 30 + 20; // Size between 20px and 50px
-                const top = Math.random() * 100; // Position between 0% and 100%
-                const left = Math.random() * 100; // Position between 0% and 100%
-
+                const size = Math.random() * 30 + 20;
+                const top = Math.random() * 100;
+                const left = Math.random() * 100;
                 heart.style.fontSize = `${size}px`;
                 heart.style.top = `${top}%`;
                 heart.style.left = `${left}%`;
-
                 container.appendChild(heart);
             }
         }
