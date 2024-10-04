@@ -25,6 +25,7 @@
             height: 100px;
             position: relative;
             cursor: pointer;
+            z-index: 1; /* Lower z-index so it appears behind the play button */
         }
 
         .envelope-icon {
@@ -80,6 +81,7 @@
             font-size: 18px;
             cursor: pointer;
             margin: 20px 0;
+            z-index: 10; /* Higher z-index to make sure it stays on top */
         }
 
         .heart-animation { 
