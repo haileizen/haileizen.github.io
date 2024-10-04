@@ -17,7 +17,8 @@
             height: 100vh; 
             overflow: hidden; 
             position: relative; 
-        } 
+            flex-direction: column;
+        }
 
         .envelope {
             width: 150px;
@@ -68,7 +69,18 @@
         .heart { 
             color: #e78c8c; 
             font-size: 24px; 
-        } 
+        }
+
+        .music-player-btn {
+            background-color: #e78c8c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 20px 0;
+        }
 
         .heart-animation { 
             position: absolute; 
@@ -103,10 +115,11 @@
         </div>
     </div>
 
-    <!-- Audiomack Audio Player -->
-    <div class="music-player-container">
-        <iframe src="https://audiomack.com/embed/ingrid-237/song/ikaw-at-ako" scrolling="no" width="100%" height="252" frameborder="0" title="Ikaw at Ako"></iframe>
-    </div>
+    <!-- Music Play Button -->
+    <button class="music-player-btn" onclick="playMusic()">Play Song</button>
+
+    <!-- Hidden Audio Element -->
+    <audio id="audio" src="https://audiomack.com/song/ingrid-237/ikaw-at-ako" preload="auto"></audio>
 
     <!-- Container for animated hearts -->
     <div id="hearts-container"></div>
@@ -136,6 +149,13 @@
                 heart.style.left = `${left}%`;
                 container.appendChild(heart);
             }
+        }
+
+        function playMusic() {
+            const audio = document.getElementById('audio');
+            audio.play().catch(error => {
+                console.log('Audio playback error:', error);
+            });
         }
     </script>
 </body>
