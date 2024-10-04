@@ -106,6 +106,10 @@
         </div>
     </div>
 
+    <!-- SoundCloud Embed (Auto-play) -->
+    <iframe width="0" height="0" scrolling="no" frameborder="no" 
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/zmtavwYFJ12ufwjQ8&color=%23ff5500&inverse=false&auto_play=true&show_user=true"></iframe>
+
     <!-- Direct MP3 Player (Hidden) -->
     <audio id="audio" src="https://your-username.github.io/your-repository/assets/your-audio-file.mp3" preload="auto"></audio>
 
@@ -116,7 +120,6 @@
         function showMessage() {
             document.getElementById('modal').style.display = 'flex';
             createHearts(); // Ensure hearts are created after showing the message
-            playAudio(); // Play audio when envelope is clicked
         }
 
         function closeModal() {
@@ -154,13 +157,6 @@
 
                 container.appendChild(heart);
             }
-        }
-
-        function playAudio() {
-            const audio = document.getElementById('audio');
-            audio.play().catch(error => {
-                console.log('Audio playback error:', error);
-            });
         }
     </script>
 </body>
